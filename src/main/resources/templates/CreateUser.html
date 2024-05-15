@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="index.html">
+<head>
+    <meta charset="UTF-8">
+    <title>Create User</title>
+    <!-- Liens vers les fichiers Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        h2 {
+            margin-bottom: 20px;
+            color: orange; /* Titre en orange */
+        }
+        .label-white {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <h2>Create User</h2>
+    <form action="/saveUser" method="post" th:action="@{/saveUser}">
+
+    <div class="form-group">
+            <label for="username" class="label-white">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="label-white">Phone Number:</label>
+            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
+
+        <a href="/usersList" class="btn btn-primary">Liste</a>
+        <button type="submit" class="btn btn-success">Create</button>
+    </form>
+</div>
+</body>
+</html>

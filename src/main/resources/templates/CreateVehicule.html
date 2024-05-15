@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="index.html">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Vehicule</title>
+    <!-- Liens vers les fichiers Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        h2 {
+            margin-bottom: 20px;
+            color: orange; /* Titre en orange */
+        }
+        .label-white {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <h2>Create New Vehicule</h2>
+    <form action="/saveVehicule" method="post" th:action="@{/saveVehicule}">
+        <div class="form-group">
+            <label for="brand" class="label-white">Brand:</label>
+            <input type="text" class="form-control" id="brand" name="brand" required>
+        </div>
+        <div class="form-group">
+            <label for="model" class="label-white">Model:</label>
+            <input type="text" class="form-control" id="model" name="model" required>
+        </div>
+        <div class="form-group">
+            <label for="registrationNumber" class="label-white">Registration Number:</label>
+            <input type="text" class="form-control" id="registrationNumber" name="registrationNumber" required>
+        </div>
+        <a href="/vehiculesList" class="btn btn-primary">Liste</a>
+        <button type="submit" class="btn btn-success">Create</button>
+    </form>
+</div>
+</body>
+</html>

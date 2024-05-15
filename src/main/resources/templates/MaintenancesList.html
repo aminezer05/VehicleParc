@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="index.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Maintenances</title>
+    <!-- Liens vers les fichiers Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Lien vers jQuery (requis pour Bootstrap JavaScript) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Lien vers les fichiers Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: orange;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #007bff;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: orange;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid orange;
+            color: #ddd;
+        }
+        th {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <h2>Liste des Maintenances</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Vehicle ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="maintenance : ${maintenance}">
+                <td th:text="${maintenance.id}"></td>
+                <td th:text="${maintenance.startDate}"></td>
+                <td th:text="${maintenance.endDate}"></td>
+                <td th:text="${maintenance.vehicleid}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/createMaintenance" class="btn btn-primary">Ajouter</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="index.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Controle Technique</title>
+    <!-- Liens vers les fichiers Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        h2 {
+            margin-bottom: 20px;
+            color: orange;
+        }
+        .label-white {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <h2>Create New Controle Technique</h2>
+    <form action="/saveControleTechnique" method="post" th:action="@{/saveControleTechnique}">
+        <div class="form-group">
+            <label for="registrationNumber" class="label-white">Registration Number:</label>
+            <input type="text" class="form-control" id="registrationNumber" name="registrationNumber" th:required="required">
+        </div>
+        <div class="form-group">
+            <label for="passed" class="label-white">Passed:</label>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="passed" name="passed" value="true">
+                <label class="form-check-label label-white" for="passed">Passed</label>
+            </div>
+        </div>
+        <!-- Add more fields as needed -->
+        <a href="/controleTechniqueList" class="btn btn-primary">Liste</a>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Management</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.css">
+    <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-image: url('https://www.chevinfleet.com/wp-content/uploads/2019/11/Fleetmanager-1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{home}">VP</a>
+        </li>
+        *
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Controle Technique</a>
+            <ul class="dropdown-menu">
+                <li th:if="${#authorization.expression('hasAnyRole(''ADMIN'',''USER'')')}">
+                    <a class="dropdown-item" th:href="@{createControleTechnique}">New</a></li>
+                <li><a class="dropdown-item" th:href="@{controleTechniqueList}">List</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Accident</a>
+            <ul class="dropdown-menu">
+                <li th:if="${#authorization.expression('hasAnyRole(''ADMIN'',''USER'')')}">
+                    <a class="dropdown-item" th:href="@{createAccident}">New</a></li>
+                <li><a class="dropdown-item" th:href="@{accidentList}">List</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Vehicule</a>
+            <ul class="dropdown-menu">
+                <li th:if="${#authorization.expression('hasAnyRole(''ADMIN'',''USER'')')}">
+                    <a class="dropdown-item" th:href="@{createVehicule}">New</a></li>
+                <li><a class="dropdown-item" th:href="@{vehiculesList}">List</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Clients</a>
+            <ul class="dropdown-menu">
+                <li th:if="${#authorization.expression('hasAnyRole(''ADMIN'',''USER'')')}">
+                    <a class="dropdown-item" th:href="@{createUser}">New</a></li>
+                <li><a class="dropdown-item" th:href="@{usersList}">List</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Contract</a>
+            <ul class="dropdown-menu">
+                <li th:if="${#authorization.expression('hasAnyRole(''ADMIN'',''USER'')')}">
+                    <a class="dropdown-item" th:href="@{createContrat}">Create</a></li>
+                <li><a class="dropdown-item" th:href="@{maintenancesList}">List</a></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+            <a class="nav-link
+             dropdown-toggle"
+               href="#"
+               role="button"
+               data-bs-toggle="dropdown"
+               th:text="${#authentication.name}"
+            >
+                [username]
+            </a>
+            <ul class="dropdown-menu">
+                <a sec:authorize="!isAuthenticated()" class="dropdown-item" href="#">login</a>
+                <form method="post" th:action="@{/logout}">
+                    <button sec:authorize="isAuthenticated()" class="dropdown-item" type="submit">logout</button>
+                </form>
+
+            </ul>
+        </li>
+    </ul>
+</nav>
+<main class="container mt-5">
+    <div layout:fragment="content">
+
+    </div>
+</main>
+
+</body>
+</html>

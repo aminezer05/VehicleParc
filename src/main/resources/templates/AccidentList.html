@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="index.html"
+>
+<head>
+    <meta charset="utf-8">
+    <title>Accidents List</title>
+    <!-- Liens vers les fichiers Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Lien vers jQuery (requis pour Bootstrap JavaScript) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Lien vers les fichiers Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        h1 {
+            margin-bottom: 20px;
+            color: orange; /* Titre en orange */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        .table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            color: white; /* Données en blanc */
+        }
+        .table td {
+            color: white; /* Données en blanc */
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <main>
+        <div class="container">
+            <h1>Accidents List</h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Vehicule ID</th>
+                    <!-- Add more columns as needed -->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="accident : ${accidents}">
+                    <td th:text="${accident.id}"></td>
+                    <td th:text="${accident.description}"></td>
+                    <td th:text="${accident.date}"></td>
+                    <td th:text="${accident.vehicule?.id}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-success" onclick="window.location.href='/CreateAccident.html'">Ajouter</button>
+
+        </div>
+    </main>
+</div>
+</body>
+</html>

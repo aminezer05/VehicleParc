@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{index}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Controle Technique List</title>
+    <!-- Liens vers les fichiers Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Styles spécifiques à cette page */
+        .container {
+            padding: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: orange;
+        }
+        .table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            color: white;
+        }
+        .thead-dark th {
+            background-color: #343a40;
+            color: #fff;
+            border-color: #454d55;
+        }
+        .table td {
+            color: white;
+        }
+        .btn-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <h2>Controle Technique List</h2>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Registration Number</th>
+                <th scope="col">Passed</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ct : ${controletechniques}">
+                <td th:text="${ct.registrationNumber}"></td>
+                <td th:text="${ct.passed ? 'Yes' : 'No'}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <div class="btn-container">
+                <a th:href="@{/createReparation}" class="btn btn-primary">Reparer</a>
+            <a href="/createControleTechnique" class="btn btn-success">Ajouter</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

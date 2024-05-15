@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="index.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Créer une Maintenance</title>
+    <!-- Liens vers les fichiers Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Lien vers jQuery (requis pour Bootstrap JavaScript) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Lien vers les fichiers Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        h2 {
+            margin-bottom: 20px;
+            color: orange; /* Titre en orange */
+        }
+        label {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content" class="container mt-5">
+    <h2>Créer une Maintenance</h2>
+    <form action="/saveMaintenance" method="post" th:object="${maintenance}" th:action="@{/saveMaintenance}">
+        <div class="form-group">
+            <label for="startDate">Date de début :</label>
+            <input type="date" id="startDate" name="startDate" class="form-control" th:field="*{startDate}" required>
+        </div>
+        <div class="form-group">
+            <label for="endDate">Date de fin :</label>
+            <input type="date" id="endDate" name="endDate" class="form-control" th:field="*{endDate}" required>
+        </div>
+        <div class="form-group">
+            <label for="vehicleId">Vehicle ID :</label>
+            <input type="text" id="vehicleid" name="vehicleid" class="form-control" th:field="*{vehicleid}" required>
+        </div>
+
+        <a href="/maintenancesList" class="btn btn-primary">Liste</a>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+</body>
+</html>
+

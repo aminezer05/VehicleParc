@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="index.html">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Assurance</title>
+    <!-- Liens vers les fichiers Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        h2 {
+            margin-bottom: 20px;
+            color: orange;
+        }
+        label {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div layout:fragment="content" class="container">
+    <h2>Create New Assurance</h2>
+    <form action="/saveAssurance" method="post" th:action="@{/saveAssurance}">
+
+        <div class="form-group">
+            <label for="companyName">Nom de la compagnie :</label>
+            <input type="text" id="companyName" name="companyName" class="form-control" th:required="required">
+        </div>
+        <div class="form-group">
+            <label for="expiryDate">Date d'expiration :</label>
+            <input type="text" id="expiryDate" name="expiryDate" class="form-control" th:required="required">
+        </div>
+        <div class="form-group">
+            <label for="vehiculeId">ID du véhicule :</label>
+            <select id="vehiculeId" name="vehicule.id" class="form-control">
+                <option th:each="vehicule : ${vehicules}" th:value="${vehicule.id}" th:text="${vehicule.id}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+    </form>
+</div>
+
+</body>
+</html>

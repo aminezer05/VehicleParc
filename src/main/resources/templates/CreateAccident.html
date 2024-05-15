@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="index.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Accident</title>
+    <!-- Liens vers les fichiers Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        h2 {
+            margin-bottom: 20px;
+            color: orange; /* Titre en orange */
+        }
+        .label-white {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <h2>Create New Accident</h2>
+    <form action="/saveAccident" method="post" th:action="@{/saveAccident}">
+        <div class="form-group">
+            <label for="description" class="label-white">Description:</label>
+            <input type="text" class="form-control" id="description" name="description" th:required="required">
+        </div>
+        <div class="form-group">
+            <label for="date" class="label-white">Date:</label>
+            <input type="date" class="form-control" id="date" name="date" th:required="required">
+        </div>
+        <div class="form-group">
+            <label for="vehiculeId" class="label-white">Vehicule ID:</label>
+            <input type="text" class="form-control" id="vehiculeId" name="vehiculeId" th:required="required">
+        </div>
+        <a href="/accidentList" class="btn btn-primary">Liste</a>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+</body>
+</html>

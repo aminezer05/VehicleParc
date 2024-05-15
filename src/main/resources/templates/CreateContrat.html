@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            line-height: 1.6;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+        }
+        .btn-save {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Contrat de service</h1>
+    <form id="contract-form">
+        <textarea id="contract-text" name="contract-text" readonly>
+            En vertu du présent contrat, [Nom de l'entreprise] fournira les services suivants à [Nom du client]:
+
+            1. Service 1
+            2. Service 2
+            3. Service 3
+            <!-- Ajoutez d'autres services selon vos besoins -->
+
+            Les modalités de paiement, les conditions de résiliation et autres détails sont convenus séparément entre les parties.
+
+            Date: [Date du contrat]
+
+            Signature du représentant de l'entreprise: ___________________
+
+            Signature du client: ___________________
+        </textarea>
+        <button type="button" class="btn-save" onclick="enableEditing()">Modifier le contrat</button>
+        <button type="button" class="btn-save" id="save-btn" style="display: none;">Enregistrer les modifications</button>
+    </form>
+</div>
+
+<script>
+    function enableEditing() {
+        document.getElementById('contract-text').removeAttribute('readonly');
+        document.querySelector('.btn-save').style.display = 'none';
+        document.getElementById('save-btn').style.display = 'block';
+    }
+
+    document.getElementById('contract-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var contractText = document.getElementById('contract-text').value;
+        // Vous pouvez ajouter ici le code pour envoyer le texte du contrat à votre backend
+        // Par exemple, avec une requête AJAX
+        alert('Le contrat a été modifié :\n\n' + contractText);
+        document.getElementById('contract-text').setAttribute('readonly', 'true');
+        document.querySelector('.btn-save').style.display = 'block';
+        document.getElementById('save-btn').style.display = 'none';
+    });
+
+    document.getElementById('save-btn').addEventListener('click', function() {
+        var contractText = document.getElementById('contract-text').value;
+        // Envoyer le texte du contrat à votre backend avec une requête AJAX
+        // Par exemple :
+        // fetch('/votre-endpoint-api', {
+        //    method: 'POST',
+        //    body: JSON.stringify({ contratText: contractText }),
+        //    headers: {
+        //        'Content-Type': 'application/json'
+        //    }
+        // })
+        // .then(response => {
+        //     if (!response.ok) {
+        //         throw new Error('Une erreur s\'est produite');
+        //     }
+        //     alert('Le contrat a été enregistré avec succès!');
+        // })
+        // .catch(error => {
+        //     alert('Une erreur s\'est produite lors de l\'enregistrement du contrat');
+        // });
+    });
+</script>
+</body>
+</html>
